@@ -33,8 +33,9 @@ public class App
       });
 
 	/*map https://jarroba.com/map-en-java-con-ejemplos/
-	Gson() https://stackoverflow.com/questions/31837941/gson-fromjson-throws-stackoverflowerror?noredirect=1&lq=1
-		deserialization https://stackoverflow.com/questions/1360632/what-are-object-serialization-and-deserialization
+	Gson() https://github.com/google/gson/blob/master/UserGuide.md
+			https://stackoverflow.com/questions/31837941/gson-fromjson-throws-stackoverflowerror?noredirect=1&lq=1
+				deserialization https://stackoverflow.com/questions/1360632/what-are-object-serialization-and-deserialization
 	*/
 
       post("/users", (req, res) -> {
