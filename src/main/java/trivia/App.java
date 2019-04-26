@@ -17,6 +17,8 @@ import java.util.Map;
 public class App
 {
     public static void main( String[] args )
+
+	//before, req(request), res(response), after, get, post http://sparkjava.com/documentation#stopping-the-server
     {
       before((request, response) -> {
         Base.open();
@@ -26,9 +28,14 @@ public class App
         Base.close();
       });
 
+	//params
+
       get("/hello/:name", (req, res) -> {
         return "hello" + req.params(":name");
       });
+
+	//map https://jarroba.com/map-en-java-con-ejemplos/
+	//Gson() https://stackoverflow.com/questions/31837941/gson-fromjson-throws-stackoverflowerror?noredirect=1&lq=1
 
       post("/users", (req, res) -> {
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
