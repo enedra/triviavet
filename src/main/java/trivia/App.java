@@ -28,14 +28,15 @@ public class App
         Base.close();
       });
 
-	//params
-
       get("/hello/:name", (req, res) -> {
         return "hello" + req.params(":name");
       });
 
-	//map https://jarroba.com/map-en-java-con-ejemplos/
-	//Gson() https://stackoverflow.com/questions/31837941/gson-fromjson-throws-stackoverflowerror?noredirect=1&lq=1
+	/*map https://jarroba.com/map-en-java-con-ejemplos/
+	Gson() https://github.com/google/gson/blob/master/UserGuide.md
+			https://stackoverflow.com/questions/31837941/gson-fromjson-throws-stackoverflowerror?noredirect=1&lq=1
+				deserialization https://stackoverflow.com/questions/1360632/what-are-object-serialization-and-deserialization
+	*/
 
       post("/users", (req, res) -> {
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
