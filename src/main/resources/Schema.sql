@@ -4,11 +4,11 @@ use trivia_dev;
 
 CREATE TABLE IF NOT EXISTS users (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
-  username VARCHAR(56) NOT NULL,
-  password VARCHAR(56),
-  cantCorrectas int,
-  cantIncorrectas int,
-  admin BOOLEAN,
+  name VARCHAR(56) NOT NULL,
+  pass VARCHAR(56),
+  canc int,
+  cani int,
+  admi BOOLEAN,
   created_at DATETIME,
   updated_at DATETIME
 );
@@ -17,16 +17,15 @@ CREATE TABLE IF NOT EXISTS questions (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
   user_id int(11),
   categorie_id int(11),
-  description VARCHAR(255) NOT NULL,
-  active BOOLEAN,
+  ques VARCHAR(255) NOT NULL,
+  actv BOOLEAN,
   created_at DATETIME,
   updated_at DATETIME
 );
 
 CREATE TABLE Categories (
   id  int(11) NOT NULL auto_increment PRIMARY KEY,
-  nomCat VARCHAR(56) NOT NULL,
-  user_id int,
+  nomb VARCHAR(56) NOT NULL,
   created_at DATETIME,
   updated_at DATETIME
   );
@@ -34,8 +33,8 @@ CREATE TABLE Categories (
 CREATE TABLE IF NOT EXISTS options (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
   question_id int(11),
-  description VARCHAR(255) NOT NULL,
-  correct BOOLEAN,
+  optn VARCHAR(255) NOT NULL,
+  corr BOOLEAN,
   created_at DATETIME,
   updated_at DATETIME
 );
@@ -43,7 +42,7 @@ CREATE TABLE IF NOT EXISTS options (
 create table Games(
 	id int not null auto_increment primary key,
     user_id int(11),
-    fecha date,
+    fech date,
     created_at DATETIME,
 	updated_at DATETIME
 );
@@ -55,8 +54,8 @@ create table Questions_Games(
 	updated_at DATETIME
 );
 
-create table PregunResp(
-	resp_id int(11),
+create table Questions_Options(
+	option_id int(11),
     user_id int(11),
 	created_at DATETIME,
 	updated_at DATETIME
