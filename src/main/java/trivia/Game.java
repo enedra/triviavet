@@ -2,8 +2,8 @@ package trivia;
 
 import org.javalite.activejdbc.Model;
 
-public class Games extends Model {
+public class Game extends Model {
 
-	validatePresenceOf();
+	//validatePresenceOf();
 
 }

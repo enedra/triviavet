@@ -2,9 +2,9 @@ package trivia;
 
 import org.javalite.activejdbc.Model;
 
-public class User extends Model {
+public class Categori extends Model {
 	static{
-		validatePresenceOf("name");
+		validatePresenceOf("nomb");
 	}
 
 }
