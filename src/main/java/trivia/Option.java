@@ -4,6 +4,6 @@ import org.javalite.activejdbc.Model;
 
 public class Option extends Model {
 	static{
-		validatePresenceOf("optn");
+		validatePresenceOf("optn","question_id","corr");
 	}
 }
