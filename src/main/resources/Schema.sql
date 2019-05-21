@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS questions (
   updated_at DATETIME
 );
 
-CREATE TABLE Categories (
+CREATE TABLE IF NOT EXISTS Categories (
   id  int(11) NOT NULL auto_increment PRIMARY KEY,
   nomb VARCHAR(56) NOT NULL,
   created_at DATETIME,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS options (
   updated_at DATETIME
 );
 
-create table Games(
+create table IF NOT EXISTS Games(
 	id int not null auto_increment primary key,
     user_id int(11),
     fech date,
@@ -47,14 +47,14 @@ create table Games(
 	updated_at DATETIME
 );
 
-create table Questions_Games(
+create table IF NOT EXISTS Questions_Games(
 	question_id int(11),
     user_id int(11),
 	created_at DATETIME,
 	updated_at DATETIME
 );
 
-create table Questions_Options(
+create table IF NOT EXISTS Questions_Options(
 	option_id int(11),
     user_id int(11),
 	created_at DATETIME,

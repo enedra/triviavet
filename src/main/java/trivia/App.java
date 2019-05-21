@@ -14,8 +14,12 @@ import trivia.User;
 import com.google.gson.Gson;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
+
 public class App
 {
+    static User currentUser;
     public static void main( String[] args )
 
 	//before, req(request), res(response), after, get, post http://sparkjava.com/documentation#stopping-the-server
@@ -42,8 +46,11 @@ public class App
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
         User user = new User();
-        user.set("username", bodyParams.get("username"));
-        user.set("password", bodyParams.get("password"));
+        user.set("name", bodyParams.get("name"));
+        user.set("pass", bodyParams.get("pass"));
+        user.set("canc", bodyParams.get("canc"));
+        user.set("cani", bodyParams.get("cani"));
+        user.set("admi", bodyParams.get("admi"));
         user.saveIt();
 
         res.type("application/json");
