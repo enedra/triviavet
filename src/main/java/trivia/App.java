@@ -93,17 +93,17 @@ public class App
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
-        Boolean flag = true;
+        Boolean noEncontrado = true;
         List<Question> question = Question.where("cate = ?", bodyParams.get("cate"));
         Question preg = new Question();
 
         int a = 0;
 
-        while(flag){
+        while(noEncontrado){
           a++;
           preg = question.get(a);
           if(!(Boolean)preg.get("actv")){
-            flag = false;
+            noEncontrado = false;
           }
         }
         int id = (int)preg.get("id");
@@ -190,7 +190,7 @@ public class App
           String pass = (String)bodyParams.get("pass");
           if(user.get("pass").equals(pass)){
           
-            Boolean flag = true;
+            Boolean noEncontrado = true;
             List<Question> question = Question.where("cate = ? and actv = ?", bodyParams.get("cate"),false);
             Question preg = new Question();
 
@@ -200,11 +200,11 @@ public class App
 
             int a = 0;
 
-            while(flag){
+            while(noEncontrado){
               a++;
               preg = question.get(a);
               if(!(Boolean)preg.get("actv")){
-                flag = false;
+                noEncontrado = false;
               }
             }
 
