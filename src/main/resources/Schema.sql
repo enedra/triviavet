@@ -23,13 +23,13 @@ CREATE TABLE IF NOT EXISTS questions (
   updated_at DATETIME
 );
 
-/*CREATE TABLE IF NOT EXISTS Categories (
+CREATE TABLE IF NOT EXISTS Categories (
   id  int(11) NOT NULL auto_increment PRIMARY KEY,
   nomb VARCHAR(56) NOT NULL,
   created_at DATETIME,
   updated_at DATETIME
   );
-*/
+
 CREATE TABLE IF NOT EXISTS options (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
   question_id int(11),

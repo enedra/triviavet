@@ -19,15 +19,15 @@ import java.util.*;
 
 import com.google.gson.Gson;
 
-class QuestionParam
+class Questiones
 {
   String ques;
   String cate;
   Boolean actv;
-  ArrayList<OptionParam> options;
+  ArrayList<Optiones> options;
 }
 
-class OptionParam
+class Optiones
 {
   String optn;
   Boolean corr;
@@ -70,7 +70,7 @@ public class App
 
       post("/questions", (req, res) -> {
         
-        QuestionParam bodyParams = new Gson().fromJson(req.body(), QuestionParam.class);
+        Questiones bodyParams = new Gson().fromJson(req.body(), Questiones.class);
 
         Question question = new Question();
         question.set("ques", bodyParams.ques);
@@ -79,7 +79,7 @@ public class App
         question.saveIt();
 
 
-        for(OptionParam item: bodyParams.options) {
+        for(Optiones item: bodyParams.options) {
           Option option = new Option();
           option.set("optn", item.optn).set("corr", item.corr);
           question.add(option);
@@ -89,7 +89,8 @@ public class App
         return question.toJson(true);
       });
 
-      get("/questions", (req, res) -> {//return a question whith his options
+      //return a question whith his options
+      get("/questions", (req, res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -98,7 +99,6 @@ public class App
         Question preg = new Question();
 
         int a = 0;
-
         while(noEncontrado){
           a++;
           preg = question.get(a);
@@ -115,10 +115,11 @@ public class App
           lista.add(opcion);
         }
         
-        return "la pregunta es : " + preg.get("ques") + "y las opciones son :" + lista;
+        return preg.get("ques") + " : " + lista;
       });  
 
-      get("/users", (req, res) -> {//verfication that a user is load
+      //verify that some user is load
+      get("/users", (req, res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -132,8 +133,9 @@ public class App
         }
 
       });
-      
-      put("/users", (req,res) -> {//modify a pass of a user with his name
+
+      //modify a pass of a user with his name
+      put("/users", (req,res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -146,7 +148,8 @@ public class App
         return user.toJson(true);
       });
 
-      delete("/users", (req, res) -> {//delete a user
+      //delete a user
+      delete("/users", (req, res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -156,7 +159,8 @@ public class App
         return "Usuario eliminado";
       });
       
-      put("/questions", (req,res) -> {//modify the description of a question with his id
+      //modify the description of a question with his id
+      put("/questions", (req,res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -169,7 +173,8 @@ public class App
         return question.toJson(true);
       });
 
-      delete("/questions", (req, res) -> {//delete a question
+      //delete a question
+      delete("/questions", (req, res) -> {
         
         Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
 
@@ -241,27 +246,8 @@ public class App
         }
       }
       
-      return "hola";     
+      return "";     
     });
-
-
-      post("/stats", (req, res) -> {
-        
-        Map<String, Object> bodyParams = new Gson().fromJson(req.body(), Map.class);
-
-        List<User> users = User.where("name = ?", bodyParams.get("name"));
-        if(users.size() > 0){
-          User user = users.get(0);
-          res.type("application/json");
-          
-          return user.toJson(true);
-        }else{
-          
-          return "name no encontrado";
-        }
-
-      });
-
 
       post("/login", (req, res) -> {
         res.type("application/json");
