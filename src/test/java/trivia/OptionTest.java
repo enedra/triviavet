@@ -9,11 +9,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserTest {
+public class OptionTest {
   @Before
   public void before(){
       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/trivia_dev", "root", "ojodehorus25683");
-      System.out.println("UserTest setup");
+      System.out.println("OptionTest setup");
       Base.openTransaction();
   }
 
@@ -23,19 +23,14 @@ public class UserTest {
       Base.rollbackTransaction();
       Base.close();
   }
-/*
+
   @Test
-  public void validateTruth() {
-    assertEquals("True is true", true, true);
+  public void validatePresenceOfOption() {
+	  Option option = new Option();
+      option.set("optn", "enfermedad");
+      option.set("corr", true);
+      option.set("question_id", "1");
+         
+    assertEquals("username can't be blank", option.isValid(), true);
   }
-*/
-  @Test
-  public void validatePresenceOfUsername() {
-    User user = new User();
-    user.set("user", "edu");
-    user.set("pass", "edu");
-    user.set("canc", 0);
-    user.set("cani",0);
-    assertEquals("username can't be blank", user.isValid(), true);
-}
 }

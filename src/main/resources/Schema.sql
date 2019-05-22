@@ -16,20 +16,20 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS questions (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
   user_id int(11),
-  categorie_id int(11),
+  cate VARCHAR(255) NOT NULL,
   ques VARCHAR(255) NOT NULL,
   actv BOOLEAN,
   created_at DATETIME,
   updated_at DATETIME
 );
 
-CREATE TABLE IF NOT EXISTS Categories (
+/*CREATE TABLE IF NOT EXISTS Categories (
   id  int(11) NOT NULL auto_increment PRIMARY KEY,
   nomb VARCHAR(56) NOT NULL,
   created_at DATETIME,
   updated_at DATETIME
   );
-
+*/
 CREATE TABLE IF NOT EXISTS options (
   id int(11) NOT NULL auto_increment PRIMARY KEY,
   question_id int(11),
