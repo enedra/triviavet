@@ -37,6 +37,42 @@ public class User extends Model {
         return this.getInteger("admi");
 	}
 
+	public User getUser(int id){
+		User u = User.findById(id);
+		return u;
+	}
+
+	public void deleteUser(int id){
+		User u = User.findById(id);
+		u.delete();
+	}
+
+	public void createUser(String username, String password, boolean admin){
+		User user = new User(username, password, admin);
+		user.saveIt();
+	}
+
+	public Map getAllUser(){
+		Map u = new HashMap();
+		u.put("id", this.(getId)());
+		u.put("mane", this.(getName()));
+		u.put("pass", this.(getPass()));
+		u.put("admi", this.(getAdmi()));
+		u.put("canc", this.(getCanc()));
+		u.put("cani", this.(getCani()));
+		return u;
+	}
+
+	public Map getAllUsers(){
+		List<User> u = new ArrayList<User>();
+        u = User.findAll();
+        List<Map> us = new ArrayList<Map>();
+        for (User user : u) {
+            us.add(user.getAllUser());
+        }
+		return us;
+	}
+
 
 
 }
