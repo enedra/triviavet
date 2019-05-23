@@ -38,7 +38,7 @@ public class App
     static User currentUser;
     public static void main( String[] args )
 
-	//before, req(request), res(response), after, get, post http://sparkjava.com/documentation#stopping-the-server
+  //before, req(request), res(response), after, get, post http://sparkjava.com/documentation#stopping-the-server
     {
       before((request, response) -> {
         Base.open();
@@ -100,11 +100,11 @@ public class App
 
         int a = 0;
         while(noEncontrado){
-          a++;
           preg = question.get(a);
           if(!(Boolean)preg.get("actv")){
             noEncontrado = false;
           }
+          a++;
         }
         int id = (int)preg.get("id");
 
