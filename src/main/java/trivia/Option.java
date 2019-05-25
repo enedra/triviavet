@@ -47,10 +47,11 @@ public class Option extends Model {
 	public static List<Map> getAllOptionMap() {
 		List<Option> listOption = new ArrayList<Option>();
 		listOption = Option.findAll();
-		List<Map> listMap = new ArrayList<Map>();
-		for (Option option : listMap) {
-			listMap.add(option.getOption());
+		List<Map> AllOptionMap = new ArrayList<Map>();
+		for (Option option : listOption) {
+			AllOptionMap.add(option.getOptionMap());
 		}
+		return AllOptionMap;
 	}
 
 	public static Option getOption(int id) {
@@ -65,7 +66,5 @@ public class Option extends Model {
 
 	public static void createOption(String optn, boolean corr, int question_id) {
 		Option option = new Option(optn, corr, question_id);
-		option.SabeIt();
+		option.SaveIt();
 	}
-
-}
