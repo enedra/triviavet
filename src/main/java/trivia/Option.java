@@ -18,9 +18,14 @@ public class Option extends Model {
 	}
 
 	public Option(String optn, boolean corr, int question_id){
-		set("optn", optn);
-		set("corr", corr);
-		set("question_id", question_id);
+		int lenghtQuestionOption = lenght(getQuestionOptionMap(question_id));
+		if (!(corr && oneOptionTrue(question_id)) && (lenghtQuestionOption < 4)) { //comprobar si esta bien
+			if ((lenghtQuestionOption < 3) || ((lenghtQuestionOption = 3) && (corr != oneOptionTrue(question_id))) {
+				set("optn", optn);
+				set("corr", corr);
+				set("question_id", question_id);
+			}
+		}
 	}
 
 	public String getOptn() {
@@ -44,14 +49,16 @@ public class Option extends Model {
 		return option;
 	}
 
-	public static List<Map> getAllOptionMap() {
-		List<Option> listOption = new ArrayList<Option>();
-		listOption = Option.findAll();
-		List<Map> AllOptionMap = new ArrayList<Map>();
-		for (Option option : listOption) {
-			AllOptionMap.add(option.getOptionMap());
+	public static List<Map> getQuestionOptionMap(int ques_id) {
+		List<Option> allOption = new ArrayList<Option>();
+		allOption = Option.findAll();
+		List<Map> questionOptionMap = new ArrayList<Map>();
+		for (Option option : allOption) {
+			if option.getId() = ques_id {
+				questionOptionMap.add(option.getOptionMap());
+			}
 		}
-		return AllOptionMap;
+		return questionOptionMap;
 	}
 
 	public static Option getOption(int id) {
@@ -68,3 +75,16 @@ public class Option extends Model {
 		Option option = new Option(optn, corr, question_id);
 		option.SaveIt();
 	}
+
+	public boolean oneOptionTrue (int ques_id) {
+		List<Map> optionQuestioMap = new ArrayList<Map>();
+		questionOptionMap = getQuestionOptionMap(ques_id);
+		for (Option option : questionOption) { 
+			if option.getCorr() {
+				return true;
+			}
+		}
+		return false;
+	}
+
+//Metodos

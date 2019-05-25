@@ -44,12 +44,12 @@ public class Question extends Model {
 
 	public static List<Map> getAllQuestionMap() {
 		List<Question> listQuestion = new ArrayList<Question>();
-		ListQuestion = Question.findAll();
-		List<Map> AllQuestionMap = new ArrayList<Map>();
+		listQuestion = Question.findAll();
+		List<Map> allQuestionMap = new ArrayList<Map>();
 		for (Question question : listQuestion) {
-			AllQuestionMap.Add(Question.getQuestionMap());
+			allQuestionMap.Add(question.getQuestionMap());
 		}
-		return AllQuestionMap;
+		return allQuestionMap;
 	}
 	
 	public static Question getQuestion(int id) {
@@ -65,4 +65,18 @@ public class Question extends Model {
 	public static void createQuestion(String ques, boolean actv, int category_id) {
 		Question question = new Question(ques, actv, category_id);
 		question.SaveIt();
+	}
+
+//Metodos
+
+	public static List<Map> getCategoryQuestionMap(int cate_id) {
+		List<Question> listQuestion = new ArrayList<Question>();
+		listQuestion = Question.findAll();
+		List<Map> categoryQuestionMap = new ArrayList<Map>();
+		for (Question question : listQuestion) {
+			if question.getId() = cate_id {
+				categoryQuestionMap.Add(question.getQuestionMap());
+			}
+		}
+		return categoryQuestionMap;
 	}

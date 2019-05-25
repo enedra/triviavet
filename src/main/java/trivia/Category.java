@@ -46,4 +46,5 @@ public class Category extends Model {
 		Category cate = new Category(nom);
 		cate.saveIt();
 	}
-}
+
+//Metodos
