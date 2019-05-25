@@ -30,21 +30,10 @@ public class Categori extends Model {
 		List<Categori> cs = new  ArrayList<Categori>();
 		cs=categori.findAll();
 		List<Map> csgo = new ArrayList<Map>();
-		for (Categori cate : cs) {
-			csgo.add(cate.getCategori());
-		}
-		return csgo;
+		for (Categori cat)
 	}
 	
-	public static Categori getIdCate (int idCate){
-		Categori c = Categori.findById(idCate);
-		return c;
-	}
 	
-	public static void createCategori (VARCHAR(56) nom){
-		Categori cate = new Categori(nom);
-		cate.saveIt();
-	}
 }
 
 
