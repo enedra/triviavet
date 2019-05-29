@@ -2,6 +2,26 @@ package trivia;
 
 import org.javalite.activejdbc.Model;
 
+import static spark.Spark.get;
+import static spark.Spark.post;
+
+import static spark.Spark.before;
+import static spark.Spark.after;
+import static spark.Spark.*;
+
+import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.DB;
+
+import trivia.User;
+import trivia.Question;
+import trivia.Option;
+
+import com.google.gson.Gson;
+import java.util.*;
+
+import com.google.gson.Gson;
+
+
 public class Game extends Model {
 
 	//validatePresenceOf();
@@ -46,7 +66,7 @@ public class Game extends Model {
 		g.delete();
 	}
 	
-	public static void createAGame(Data fach){
+	public static void createAGame(Date fach){
 		Game game = new Game(fach);
 		game.saveIt();
 	}

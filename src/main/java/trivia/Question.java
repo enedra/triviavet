@@ -1,12 +1,30 @@
 package trivia;
 
 import org.javalite.activejdbc.Model;
+import static spark.Spark.get;
+import static spark.Spark.post;
+
+import static spark.Spark.before;
+import static spark.Spark.after;
+import static spark.Spark.*;
+
+import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.DB;
+
+import trivia.User;
+import trivia.Question;
+import trivia.Option;
+
+import com.google.gson.Gson;
+import java.util.*;
+
+import com.google.gson.Gson;
+
 
 public class Question extends Model {
 	static{
 		validatePresenceOf("ques", "actv");
 	}
-}
 
 	private String ques;
 	private int category_id;
@@ -47,7 +65,7 @@ public class Question extends Model {
 		listQuestion = Question.findAll();
 		List<Map> allQuestionMap = new ArrayList<Map>();
 		for (Question question : listQuestion) {
-			allQuestionMap.Add(question.getQuestionMap());
+			allQuestionMap.add(question.getQuestionMap());
 		}
 		return allQuestionMap;
 	}
@@ -64,7 +82,7 @@ public class Question extends Model {
 
 	public static void createQuestion(String ques, boolean actv, int category_id) {
 		Question question = new Question(ques, actv, category_id);
-		question.SaveIt();
+		question.saveIt();
 	}
 
 //Metodos
@@ -73,10 +91,13 @@ public class Question extends Model {
 		List<Question> listQuestion = new ArrayList<Question>();
 		listQuestion = Question.findAll();
 		List<Map> categoryQuestionMap = new ArrayList<Map>();
+		int id;
 		for (Question question : listQuestion) {
-			if question.getId() = cate_id {
-				categoryQuestionMap.Add(question.getQuestionMap());
+			id = question.getId();
+			if (id == cate_id) {
+				categoryQuestionMap.add(question.getQuestionMap());
 			}
 		}
 		return categoryQuestionMap;
 	}
+}

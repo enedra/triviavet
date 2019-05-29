@@ -1,6 +1,24 @@
 package trivia;
 
 import org.javalite.activejdbc.Model;
+import static spark.Spark.get;
+import static spark.Spark.post;
+
+import static spark.Spark.before;
+import static spark.Spark.after;
+import static spark.Spark.*;
+
+import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.DB;
+
+import trivia.User;
+import trivia.Question;
+import trivia.Option;
+
+import com.google.gson.Gson;
+import java.util.*;
+
+import com.google.gson.Gson;
 
 public class User extends Model {
 	static{
@@ -19,7 +37,7 @@ public class User extends Model {
 
     public User(String username, String password, boolean admin){
     	set("name", username);
-    	set("pass", pasword);
+    	set("pass", password);
     	set("admi", admin);
     	set("canc", 0);
     	set("cani", 0);
@@ -54,12 +72,12 @@ public class User extends Model {
 
 	public Map getAllUser(){
 		Map u = new HashMap();
-		u.put("id", this.(getId)());
-		u.put("mane", this.(getName()));
-		u.put("pass", this.(getPass()));
-		u.put("admi", this.(getAdmi()));
-		u.put("canc", this.(getCanc()));
-		u.put("cani", this.(getCani()));
+		u.put("id", this.get("id"));
+		u.put("mane", this.get("name"));
+		u.put("pass", this.get("pass"));
+		u.put("admi", this.get("admi"));
+		u.put("canc", this.get("canc"));
+		u.put("cani", this.get("cani"));
 		return u;
 	}
 
@@ -72,7 +90,5 @@ public class User extends Model {
         }
 		return us;
 	}
-
-
 
 }

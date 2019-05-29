@@ -1,5 +1,23 @@
 package trivia;
 
+import static spark.Spark.get;
+import static spark.Spark.post;
+
+import static spark.Spark.before;
+import static spark.Spark.after;
+import static spark.Spark.*;
+
+import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.DB;
+
+import trivia.User;
+import trivia.Question;
+import trivia.Option;
+
+import com.google.gson.Gson;
+import java.util.*;
+
+import com.google.gson.Gson;
 import org.javalite.activejdbc.Model;
 
 public class Category extends Model {
@@ -12,16 +30,16 @@ public class Category extends Model {
 	public Category(){
 	}
 	
-	public Category(VARCHAR(56) nomb){
+	public Category(String nomb){
 		set("nomb", nomb);
 	}
 	
-	public int getNomb(){
+	public String getNomb(){
 		return this.get("nomb");
 	}
 	
 	public Map getCategory(){
-		Map m = new hashMap();
+		Map m = new HashMap();
 		m.put("id", this.get("id"));
 		m.put("nomb", this.get("nomb"));
 		return m;
@@ -42,9 +60,10 @@ public class Category extends Model {
 		return c;
 	}
 	
-	public static void createCategory (VARCHAR(56) nom){
+	public static void createCategory (String nom){
 		Category cate = new Category(nom);
 		cate.saveIt();
 	}
 
 //Metodos
+}
