@@ -49,11 +49,11 @@ public class Option extends Model {
 	}
 
 	public boolean getCorr() {
-	        return this.get("corr");
+	        return (boolean) this.get("corr");
 	}
 
 	public int getQuestion_id() {
-	        return this.get("question_id");
+	        return (int) this.get("question_id");
 	}
 
 	public Map getOptionMap() {

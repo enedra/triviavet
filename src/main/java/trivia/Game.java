@@ -36,7 +36,7 @@ public class Game extends Model {
 	}
 	
 	public Date getFecha(){
-		return this.get("fech");
+		return (Date) this.get("fech");
 	}
 	
 	public Map getGame(){

@@ -40,15 +40,15 @@ public class Question extends Model {
 	}
 
 	public String getQues() {
-		return this.get("ques");
+		return (String) this.get("ques");
 	}
 
 	public int getCategory_id() {
-		return this.get("category_id");
+		return (int) this.get("category_id");
 	}
 
 	public boolean getActv() {
-		return this.get("actv");
+		return (boolean) this.get("actv");
 	}
 
 	public Map getQuestionMap() {
@@ -80,8 +80,8 @@ public class Question extends Model {
 		question.delete();
 	}
 
-	public static void createQuestion(String ques, boolean actv, int category_id) {
-		Question question = new Question(ques, actv, category_id);
+	public static void createQuestion(String ques, int category_id, boolean actv) {
+		Question question = new Question(ques, category_id, actv);
 		question.saveIt();
 	}
 
@@ -93,7 +93,7 @@ public class Question extends Model {
 		List<Map> categoryQuestionMap = new ArrayList<Map>();
 		int id;
 		for (Question question : listQuestion) {
-			id = question.getId();
+			id = (int) question.getId();
 			if (id == cate_id) {
 				categoryQuestionMap.add(question.getQuestionMap());
 			}
