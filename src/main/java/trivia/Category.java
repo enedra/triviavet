@@ -31,7 +31,7 @@ public class Category extends Model {
 	}
 	
 	public Category(String nomb){
-		Set("nomb", nomb);
+		set("nomb", nomb);
 	}
 	
 	public String getNomb(){

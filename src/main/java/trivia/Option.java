@@ -34,9 +34,9 @@ public class Option extends Model {
 	}
 
 	public Option(String optn, boolean corr, int question_id){
-		int lenghtQuestionOption = lenght(getQuestionOptionMap(question_id));
-		if (!(corr && oneOptionTrue(question_id)) && (lenghtQuestionOption < 4)) { //comprobar si esta bien
-			if ((lenghtQuestionOption < 3) || ((lenghtQuestionOption == 3) && (corr != oneOptionTrue(question_id)))) {
+		int lengthQuestionOption = getQuestionOptionMap(question_id).siz();
+		if (!(corr && oneOptionTrue(question_id)) && (lengthQuestionOption < 4)) { //comprobar si esta bien
+			if ((lengthQuestionOption < 3) || ((lengthQuestionOption == 3) && (corr != oneOptionTrue(question_id)))) {
 				set("optn", optn);
 				set("corr", corr);
 				set("question_id", question_id);
@@ -45,7 +45,7 @@ public class Option extends Model {
 	}
 
 	public String getOptn() {
-	        return this.get("optn");
+	        return (String) this.get("optn");
 	}
 
 	public boolean getCorr() {
@@ -57,11 +57,11 @@ public class Option extends Model {
 	}
 
 	public Map getOptionMap() {
-	    Map option = new HashMap();
+	  	Map option = new HashMap();
 		option.put("id", this.getId());
 		option.put("optn", this.getOptn());
-	    option.put("corr",this.getCorr());
-	    option.put("question_id", this.getQuestion_id());
+	    	option.put("corr",this.getCorr());
+		option.put("question_id", this.getQuestion_id());
 		return option;
 	}
 
@@ -70,7 +70,7 @@ public class Option extends Model {
 		allOption = Option.findAll();
 		List<Map> questionOptionMap = new ArrayList<Map>();
 		for (Option option : allOption) {
-			if (option.getId() = ques_id) {
+			if (option.getId() == ques_id) {
 				questionOptionMap.add(option.getOptionMap());
 			}
 		}
@@ -93,10 +93,10 @@ public class Option extends Model {
 	}
 
 	public boolean oneOptionTrue (int ques_id) {
-		List<Map> optionQuestioMap = new ArrayList<Map>();
-		questionOptionMap = getQuestionOptionMap(ques_id);
-		for (Option option : questionOption) { 
-			if (option.getCorr()) {
+		List<Map> optionQuestionMap = new ArrayList<Map>();
+		optionQuestionMap = getQuestionOptionMap(ques_id);
+		for (Map map : optionQuestionMap) { 
+			if (map.getCorr()) {
 				return true;
 			}
 		}
