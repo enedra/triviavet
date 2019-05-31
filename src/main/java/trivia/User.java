@@ -81,7 +81,7 @@ public class User extends Model {
 		return u;
 	}
 
-	public Map getAllUsers(){
+	public List<Map> getAllUsers(){
 		List<User> u = new ArrayList<User>();
         u = User.findAll();
         List<Map> us = new ArrayList<Map>();
