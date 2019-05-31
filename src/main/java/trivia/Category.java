@@ -31,11 +31,11 @@ public class Category extends Model {
 	}
 	
 	public Category(String nomb){
-		set("nomb", nomb);
+		Set("nomb", nomb);
 	}
 	
 	public String getNomb(){
-		return this.get("nomb");
+		return (String) this.get("nomb");
 	}
 	
 	public Map getCategory(){
